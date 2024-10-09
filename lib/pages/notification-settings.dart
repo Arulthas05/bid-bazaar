@@ -31,9 +31,9 @@ class _NotificationSettingState extends State<NotificationSetting> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Icon(
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
@@ -41,7 +41,7 @@ class _NotificationSettingState extends State<NotificationSetting> {
         ),
         title: Text(
           S.of(context).notifications,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
           ),
@@ -55,7 +55,7 @@ class _NotificationSettingState extends State<NotificationSetting> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Padding(
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Column(
                   children: [
                     Row(
@@ -64,14 +64,14 @@ class _NotificationSettingState extends State<NotificationSetting> {
                         Expanded(
                             flex: 3,
                             child: Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 8, right: 8, top: 8, bottom: 8),
                               child: Row(
                                 children: [
-                                  Icon(Icons.message),
+                                  const Icon(Icons.message),
                                   Flexible(
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                         left: 8,
                                         right: 8,
                                       ),
@@ -122,14 +122,14 @@ class _NotificationSettingState extends State<NotificationSetting> {
                         Expanded(
                             flex: 3,
                             child: Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 8, right: 8, top: 8, bottom: 8),
                               child: Row(
                                 children: [
-                                  Icon(Icons.message),
+                                  const Icon(Icons.message),
                                   Flexible(
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                         left: 8,
                                         right: 8,
                                       ),
@@ -180,14 +180,14 @@ class _NotificationSettingState extends State<NotificationSetting> {
                         Expanded(
                             flex: 3,
                             child: Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 8, right: 8, top: 8, bottom: 8),
                               child: Row(
                                 children: [
-                                  Icon(Icons.message),
+                                  const Icon(Icons.message),
                                   Flexible(
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                         left: 8,
                                         right: 8,
                                       ),
@@ -238,14 +238,14 @@ class _NotificationSettingState extends State<NotificationSetting> {
                         Expanded(
                             flex: 3,
                             child: Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 8, right: 8, top: 8, bottom: 8),
                               child: Row(
                                 children: [
-                                  Icon(Icons.message),
+                                  const Icon(Icons.message),
                                   Flexible(
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                         left: 8,
                                         right: 8,
                                       ),
@@ -296,14 +296,14 @@ class _NotificationSettingState extends State<NotificationSetting> {
                         Expanded(
                             flex: 3,
                             child: Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 8, right: 8, top: 8, bottom: 8),
                               child: Row(
                                 children: [
-                                  Icon(Icons.message),
+                                  const Icon(Icons.message),
                                   Flexible(
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                         left: 8,
                                         right: 8,
                                       ),

@@ -27,9 +27,9 @@ class _WishListState extends State<WishList> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Icon(
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
@@ -70,7 +70,7 @@ class _WishListState extends State<WishList> {
         //     )),
         title: Text(
           S.of(context).wish_list,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
           ),

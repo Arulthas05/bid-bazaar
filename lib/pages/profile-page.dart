@@ -5,6 +5,8 @@ import '../config/config.dart';
 import 'feedback.dart';
 import 'wishlist-page.dart';
 import 'post-add.dart';
+import '../utils/token_manager.dart'; // Import TokenManager
+import '../auth/login_page.dart'; // Import LoginPage for navigation after logout
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -33,6 +35,21 @@ class _ProfilePageState extends State<ProfilePage> {
     userProfile = "https://picsum.photos/400/200"; // Example profile URL
   }
 
+  Future<void> _logout(BuildContext context) async {
+    await TokenManager.removeToken(); // Clear the token
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Logged out successfully!'),
+      ),
+    );
+    // Navigate to the login page or any other appropriate page
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => LoginPage(), // Replace with your login page
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height: 340,
                 child: Stack(
                   alignment: Alignment.bottomCenter,
@@ -130,15 +147,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     // Profile Image
                     Positioned(
                       bottom: 235,
-                      // child: CircleAvatar(
-                      //   radius: 50,
-                      //   backgroundColor: bgWhite,
-                      //   backgroundImage:
-                      //       userProfile != null && userProfile!.isNotEmpty
-                      //           ? NetworkImage(userProfile!)
-                      //           : const AssetImage("assets/images/profile.png")
-                      //               as ImageProvider,
-                      // ),
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -147,21 +155,21 @@ class _ProfilePageState extends State<ProfilePage> {
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: ClipRRect(
-                            borderRadius: BorderRadius.circular(50),
-                            child:
-                                userProfile != null && userProfile!.isNotEmpty
-                                    ? Image.network(
-                                        userProfile!,
-                                        width: 100,
-                                        height: 100,
-                                        fit: BoxFit.cover,
-                                      )
-                                    : Image.asset(
-                                        "assets/images/profile.png",
-                                        width: 100,
-                                        height: 100,
-                                        fit: BoxFit.cover,
-                                      )),
+                          borderRadius: BorderRadius.circular(50),
+                          child: userProfile != null && userProfile!.isNotEmpty
+                              ? Image.network(
+                                  userProfile!,
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.asset(
+                                  "assets/images/profile.png",
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
+                        ),
                       ),
                     ),
                   ],
@@ -170,10 +178,16 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(height: 13),
               // Navigation containers (My Items and Post Ad)
               _buildMenuItem(context, "My items",
-                  Icons.arrow_forward_ios_rounded, WishList()),
+                  Icons.arrow_forward_ios_rounded, const WishList()),
               const SizedBox(height: 13),
               _buildMenuItem(context, "Post Ad",
-                  Icons.arrow_forward_ios_rounded, PostAdd()),
+                  Icons.arrow_forward_ios_rounded, const PostAdd()),
+              const SizedBox(height: 13),
+              // Add the logout button
+              ElevatedButton(
+                onPressed: () => _logout(context),
+                child: Text('Logout'),
+              ),
             ],
           ),
         ),

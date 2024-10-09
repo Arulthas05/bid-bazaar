@@ -21,9 +21,9 @@ class _NotificationViewState extends State<NotificationView> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Icon(
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
@@ -31,7 +31,7 @@ class _NotificationViewState extends State<NotificationView> {
         ),
         title: Text(
           S.of(context).notifications,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
           ),
@@ -55,9 +55,9 @@ class _NotificationViewState extends State<NotificationView> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Padding(
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: bgInput1,
 
                     // border:
@@ -69,12 +69,12 @@ class _NotificationViewState extends State<NotificationView> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                                 left: 8, right: 8, top: 8, bottom: 8),
                             child: Row(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     left: 8,
                                     right: 8,
                                   ),
@@ -100,13 +100,13 @@ class _NotificationViewState extends State<NotificationView> {
                           ),
                         ],
                       ),
-                      Padding(
+                      const Padding(
                         padding:
                             EdgeInsets.only(left: 16, right: 16, bottom: 16),
                         child: Text(
                             'Unfortunately, you lost the bid Unfortunately, you lost the bid Unfortunately, you lost the bid Unfortunately, you lost the bid'),
                       ),
-                      Padding(
+                      const Padding(
                         padding:
                             EdgeInsets.only(left: 16, right: 16, bottom: 16),
                         child: Text(

@@ -87,7 +87,7 @@ class LanguageScreen extends StatelessWidget {
               //   S.current.select_language,
               //   style: Theme.of(context).textTheme.headline6,
               // ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               DropdownButton<String>(
                 value: selectedValue,
                 isExpanded: true,

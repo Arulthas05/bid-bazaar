@@ -10,7 +10,7 @@ import 'splash-screen/splash_screen.dart';
 void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => LocalizationProvider()..init()),
-  ], child: const MyApp()));
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         ],
         supportedLocales: S.delegate.supportedLocales,
         locale: localizationProvider.locale,
-        home: const SplashScreen(),
+        home: SplashScreen(),
         debugShowCheckedModeBanner: false,
       );
     });

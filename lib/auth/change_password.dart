@@ -62,7 +62,7 @@ class _ChangePasswordState extends State<ChangePassword> {
         // Show success message
         print('Success');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Password changed successfully.'),
           ),
         );
@@ -111,19 +111,19 @@ class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF0F0F0),
+      backgroundColor: const Color(0xFFF0F0F0),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0b0f23),
+        backgroundColor: const Color(0xFF0b0f23),
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back_outlined,
             color: Colors.white,
           ),
         ),
-        title: Text(
+        title: const Text(
           "Change Password",
           style: TextStyle(
             color: Colors.white,
@@ -145,7 +145,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF),
+                      color: const Color(0xFFFFFFFF),
                       borderRadius: BorderRadius.circular(7),
                       boxShadow: const [
                         BoxShadow(
@@ -194,9 +194,9 @@ class _ChangePasswordState extends State<ChangePassword> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF),
+                      color: const Color(0xFFFFFFFF),
                       borderRadius: BorderRadius.circular(7),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                             color: Color(0x1A000000),
                             blurRadius: 4,
@@ -210,14 +210,14 @@ class _ChangePasswordState extends State<ChangePassword> {
                       decoration: InputDecoration(
                         labelText: 'OldPassword',
                         labelStyle: GoogleFonts.inter(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFF90A4AE))),
-                        border: OutlineInputBorder(
+                        border: const OutlineInputBorder(
                           borderSide: BorderSide.none,
                         ),
-                        prefixIcon: Icon(
+                        prefixIcon: const Icon(
                           Icons.lock_outline_rounded,
                           color: Color(0xFFec6400),
                           size: 20,
@@ -233,8 +233,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 ? Icons.visibility_outlined
                                 : Icons.visibility_off_outlined,
                             color: passToggle
-                                ? Color(0xff90A4AE)
-                                : Color(0xff90A4AE),
+                                ? const Color(0xff90A4AE)
+                                : const Color(0xff90A4AE),
                           ),
                         ),
                       ),
@@ -253,9 +253,9 @@ class _ChangePasswordState extends State<ChangePassword> {
                   Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF),
+                      color: const Color(0xFFFFFFFF),
                       borderRadius: BorderRadius.circular(7),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                             color: Color(0x1A000000),
                             blurRadius: 4,
@@ -269,14 +269,14 @@ class _ChangePasswordState extends State<ChangePassword> {
                       decoration: InputDecoration(
                         labelText: 'NewPassword',
                         labelStyle: GoogleFonts.inter(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFF90A4AE))),
-                        border: OutlineInputBorder(
+                        border: const OutlineInputBorder(
                           borderSide: BorderSide.none,
                         ),
-                        prefixIcon: Icon(
+                        prefixIcon: const Icon(
                           Icons.lock_outline_rounded,
                           color: Color(0xFFec6400),
                           size: 20,
@@ -292,8 +292,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 ? Icons.visibility_outlined
                                 : Icons.visibility_off_outlined,
                             color: passToggle1
-                                ? Color(0xff90A4AE)
-                                : Color(0xff90A4AE),
+                                ? const Color(0xff90A4AE)
+                                : const Color(0xff90A4AE),
                           ),
                         ),
                       ),
@@ -315,13 +315,13 @@ class _ChangePasswordState extends State<ChangePassword> {
                       height: 45,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Color(0xFFec6400),
+                        color: const Color(0xFFec6400),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: _isLoading
-                          ? Center(
+                          ? const Center(
                               child: Padding(
-                              padding: const EdgeInsets.all(10.0),
+                              padding: EdgeInsets.all(10.0),
                               child: CircularProgressIndicator(
                                 color: Color(0xFF0b0f23),
                               ),
@@ -330,8 +330,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                               child: Text(
                                 "Change Password",
                                 style: GoogleFonts.inter(
-                                    textStyle:
-                                        TextStyle(color: Color(0xFFFFFFFF))),
+                                    textStyle: const TextStyle(
+                                        color: Color(0xFFFFFFFF))),
                               ),
                             ),
                     ),

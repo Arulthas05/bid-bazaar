@@ -29,15 +29,15 @@ class _PaymentPageState extends State<PaymentPage> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Icon(
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
           ),
         ),
-        title: Text(
+        title: const Text(
           "Payment",
           style: TextStyle(
             color: Colors.white,
@@ -46,15 +46,15 @@ class _PaymentPageState extends State<PaymentPage> {
         ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.only(right: 10),
             child: InkWell(
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => NotificationPage()));
+                        builder: (context) => const NotificationPage()));
               },
-              child: Icon(
+              child: const Icon(
                 Icons.notifications,
                 color: Colors.white,
                 size: 30,
@@ -72,12 +72,12 @@ class _PaymentPageState extends State<PaymentPage> {
               padding: const EdgeInsets.only(
                   left: 10, right: 10, top: 0, bottom: 10),
               child: Padding(
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Container(
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                             left: 10, right: 10, top: 15, bottom: 15),
                         child: Row(
                           children: [
@@ -99,7 +99,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         child: Text(
                             'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on'),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(
@@ -112,7 +112,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                     'https://picsum.photos/400/200'),
                                 fit: BoxFit.cover)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Padding(
@@ -325,7 +325,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       InkWell(
@@ -333,7 +333,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => FeedBack()));
+                                  builder: (context) => const FeedBack()));
                         },
                         child: Container(
                           // height: 55,
@@ -351,7 +351,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       InkWell(
@@ -359,7 +359,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => FeedBack()));
+                                  builder: (context) => const FeedBack()));
                         },
                         child: Container(
                           height: 45,

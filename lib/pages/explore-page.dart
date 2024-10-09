@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
+import 'dart:convert'; // Add this import for JSON decoding
+import 'package:http/http.dart' as http; // Add this import for HTTP requests
 
 import 'package:bid_bazaar/config/config.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +9,7 @@ import 'package:flutter/material.dart';
 import '../slider/slider-page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:google_fonts/google_fonts.dart';
+import './model/location_model.dart'; // Ensure this import is correct
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
@@ -19,12 +22,53 @@ class _ExplorePageState extends State<ExplorePage> {
   final List<int> randomNumbers =
       List.generate(15, (index) => Random().nextInt(100));
 
-  // late TextEditingController _searchController;
+  List<Location> _locations = [];
+  bool _isLoading = true;
+  String? selectedLocation;
 
   @override
   void initState() {
     super.initState();
-    //  _searchController = TextEditingController();
+    _fetchLocations();
+  }
+
+  Future<void> _fetchLocations() async {
+    final response = await http.get(
+        Uri.parse('$apiUrl/api/locations/v1')); // Replace with your API URL
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> responseData = json.decode(response.body);
+      List<dynamic> data = responseData['data'];
+      setState(() {
+        _locations =
+            data.map((location) => Location.fromJson(location)).toList();
+        _isLoading = false;
+      });
+    } else {
+      throw Exception('Failed to load locations');
+    }
+  }
+
+  void _showLocationList(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return ListView.builder(
+          itemCount: _locations.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: Text(_locations[index].name),
+              onTap: () {
+                setState(() {
+                  selectedLocation = _locations[index].name;
+                });
+                Navigator.pop(context);
+              },
+            );
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -36,34 +80,31 @@ class _ExplorePageState extends State<ExplorePage> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Icon(
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Icon(
               Icons.menu_outlined,
               color: Colors.white,
             ),
           ),
         ),
-        // leadingWidth: 0,
-        // automaticallyImplyLeading: false,
         title: PreferredSize(
-            preferredSize: Size.fromHeight(40),
-            child: Container(
+            preferredSize: const Size.fromHeight(40),
+            child: SizedBox(
               height: 40,
               width: 350,
               child: TextField(
-                // controller: _searchController,
                 onChanged: (value) {
                   setState(() {}); // Update UI on search query change
                 },
                 decoration: InputDecoration(
                   hintText: "Search",
                   hintStyle: GoogleFonts.inter(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF90A4AE))),
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.search,
                     color: Color(0xFF90A4AE),
                   ),
@@ -71,19 +112,12 @@ class _ExplorePageState extends State<ExplorePage> {
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
                   ),
-                  fillColor: Color(0xFFFFFFFF),
+                  fillColor: const Color(0xFFFFFFFF),
                   filled: true,
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                 ),
               ),
             )),
-        // title: Text(
-        //   "Home Page",
-        //   style: TextStyle(
-        //     color: Colors.white,
-        //     fontSize: 20,
-        //   ),
-        // ),
         actions: const [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -104,12 +138,10 @@ class _ExplorePageState extends State<ExplorePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Card.outlined(
-                  // elevation: 12,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       side: const BorderSide(
                           color: bgButton1, style: BorderStyle.solid)),
-                  // color: Colors.white,
                   child: const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Column(
@@ -118,9 +150,9 @@ class _ExplorePageState extends State<ExplorePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(Icons.location_on_outlined),
+                            Icon(Icons.category_outlined),
                             Text(
-                              'Melbourne',
+                              'Category',
                               style: TextStyle(
                                 color: bgBlack,
                               ),
@@ -135,49 +167,48 @@ class _ExplorePageState extends State<ExplorePage> {
                     ),
                   ),
                 ),
-                Card.outlined(
-                  // elevation: 12,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      side: const BorderSide(
-                          color: bgButton1, style: BorderStyle.solid)),
-                  // color: Colors.white,
-                  child: const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(Icons.location_on_outlined),
-                            Text(
-                              'Melbourne',
-                              style: TextStyle(
-                                color: bgBlack,
+                InkWell(
+                  onTap: () => _showLocationList(
+                      context), // Function to show the location list
+                  child: Card.outlined(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        side: const BorderSide(
+                            color: bgButton1, style: BorderStyle.solid)),
+                    child: const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(Icons.location_on_outlined),
+                              Text(
+                                'Location',
+                                style: TextStyle(
+                                  color: bgBlack,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Icon(Icons.unfold_more),
-                          ],
-                        ),
-                      ],
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(Icons.unfold_more),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 )
               ],
             ),
           ),
-
           Expanded(
             flex: 1,
             child: Padding(
               padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
               child: GridView.builder(
-                // shrinkWrap: true,
-                // physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, // Number of items per row
                   crossAxisSpacing: 10.0, // Spacing between items horizontally
@@ -187,12 +218,10 @@ class _ExplorePageState extends State<ExplorePage> {
                 itemCount: randomNumbers.length,
                 itemBuilder: (context, index) {
                   return Card.outlined(
-                    // elevation: 12,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         side: const BorderSide(
                             color: bgButton1, style: BorderStyle.solid)),
-                    // color: Colors.white,
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
@@ -210,9 +239,6 @@ class _ExplorePageState extends State<ExplorePage> {
                                       fit: BoxFit.cover)),
                             ),
                           ),
-                          // SizedBox(
-                          //   height: 5,
-                          // ),
                           const Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -242,12 +268,10 @@ class _ExplorePageState extends State<ExplorePage> {
                                   decoration: BoxDecoration(
                                     color: bgButton,
                                     borderRadius: BorderRadius.circular(9),
-                                    // border:
-                                    //     Border.all(color: Colors.black, width: 2),
                                   ),
-                                  child: Center(
+                                  child: const Center(
                                     child: Padding(
-                                      padding: const EdgeInsets.all(4.0),
+                                      padding: EdgeInsets.all(4.0),
                                       child: Text(
                                         "View",
                                         style: TextStyle(
@@ -270,131 +294,6 @@ class _ExplorePageState extends State<ExplorePage> {
               ),
             ),
           )
-          // ListView.builder(
-          //   itemCount: randomNumbers.length,
-          //   shrinkWrap:
-          //       true, // Ensures the ListView uses only as much height as it needs
-          //   physics: const NeverScrollableScrollPhysics(),
-          //   itemBuilder: (context, index) {
-          //     return Row(
-          //       children: [
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             height: 90,
-          //             width: 100,
-          //             margin: const EdgeInsets.all(8.0),
-          //             decoration: BoxDecoration(
-          //               borderRadius: BorderRadius.circular(8.0),
-          //               // boxShadow: const [
-          //               //   BoxShadow(
-          //               //     color: Colors.black12,
-          //               //     offset: Offset(0, 2),
-          //               //     blurRadius: 4.0,
-          //               //   ),
-          //               // ],
-          //             ),
-          //             child: ClipRRect(
-          //               borderRadius: BorderRadius.circular(8.0),
-          //               child: CachedNetworkImage(
-          //                 imageUrl: "",
-          //                 fit: BoxFit.cover,
-          //                 placeholder: (context, url) => Container(
-          //                   child: Image.asset(
-          //                     'assets/images/loadingImage.png',
-          //                     fit: BoxFit.cover,
-          //                   ),
-          //                 ),
-          //                 errorWidget: (context, url, error) => Container(
-          //                   child: Image.asset(
-          //                     'assets/images/loadingImage.png',
-          //                     fit: BoxFit.cover,
-          //                   ),
-          //                 ),
-          //               ),
-          //             ),
-          //           ),
-          //         ),
-          //         Expanded(
-          //           flex: 2,
-          //           child: Column(
-          //             crossAxisAlignment: CrossAxisAlignment.start,
-          //             children: [
-          //               // Html(
-          //               //   data: '<div style="color: black;">${favoritePosts[index].title}</div>',
-          //               //   style: {
-          //               //     '#': Style(
-          //               //       fontSize: FontSize(15),
-          //               //       fontWeight: FontWeight.bold,
-          //               //       maxLines: 3,
-          //               //       textOverflow: TextOverflow.ellipsis,
-          //               //       fontFamily:
-          //               //       GoogleFonts.muktaMalar().fontFamily,
-          //               //     ),
-          //               //   },
-          //               // ),
-          //               // Html(
-          //               //   data: '<div> hiiii </div>',
-          //               //   style: {
-          //               //     '#': Style(
-          //               //       fontSize: FontSize(14),
-          //               //       maxLines: 3,
-          //               //       textOverflow: TextOverflow.ellipsis,
-          //               //       fontFamily: GoogleFonts.poppins().fontFamily,
-          //               //       // fontWeight: FontWeight.bold,
-          //               //
-          //               //       // padding: HtmlPaddings.symmetric(horizontal: 5,),
-          //               //       color: Theme.of(context).colorScheme.primary,
-          //               //     ),
-          //               //   },
-          //               // ),
-          //               Row(
-          //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //                 children: [
-          //                   Padding(
-          //                     padding: const EdgeInsets.only(left: 8),
-          //                     child: Text(
-          //                       'formatTimeDifference',
-          //                       // formattedDate,
-          //                       style: TextStyle(
-          //                         color: Theme.of(context)
-          //                             .colorScheme
-          //                             .onBackground,
-          //                       ),
-          //                     ),
-          //                   ),
-          //                   Padding(
-          //                     padding: const EdgeInsets.only(right: 8),
-          //                     child: GestureDetector(
-          //                       onTap: () {
-          //                         // removeFavorite(
-          //                         //     favoritePosts[index]);
-          //                       },
-          //                       child: Image.asset(
-          //                         "assets/images/favorite.png",
-          //                         width: 22,
-          //                         height: 22,
-          //                         // color: currentIndex == 3
-          //                         //     ? Theme.of(context).colorScheme.onPrimary
-          //                         //     : Theme.of(context).colorScheme.onSecondary,
-          //                         color:
-          //                             Theme.of(context).colorScheme.onPrimary,
-          //                       ),
-          //                       // child: Icon(
-          //                       //     Icons.bookmark,
-          //                       //     color: Theme.of(context).colorScheme.primary,
-          //                       //   ),
-          //                     ),
-          //                   ),
-          //                 ],
-          //               )
-          //             ],
-          //           ),
-          //         ),
-          //       ],
-          //     );
-          //   },
-          // ),
         ],
       ),
     );

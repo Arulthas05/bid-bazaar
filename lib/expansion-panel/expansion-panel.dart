@@ -8,7 +8,7 @@ class MyExpansionPanelList extends StatefulWidget {
 }
 
 class _MyExpansionPanelListState extends State<MyExpansionPanelList> {
-  List<Step> _steps = getSteps();
+  final List<Step> _steps = getSteps();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class _MyExpansionPanelListState extends State<MyExpansionPanelList> {
   Widget _renderSteps() {
     return ExpansionPanelList(
       elevation: 1,
-      expandedHeaderPadding: EdgeInsets.all(0),
+      expandedHeaderPadding: const EdgeInsets.all(0),
       expansionCallback: (int index, bool isExpanded) {
         setState(() {
           _steps[index].isExpanded = !isExpanded;

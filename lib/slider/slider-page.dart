@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
   const Carousel({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<Carousel> createState() => _CarouselState();
@@ -31,41 +31,41 @@ class _CarouselState extends State<Carousel> {
   Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-        children: [
-          CarouselSlider(
-            // Dynamically generating list of image containers
-            items: images.map((url) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                    margin: EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
-                      image: DecorationImage(
-                        image: NetworkImage(url),
-                        fit: BoxFit.cover,
-                      ),
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        CarouselSlider(
+          // Dynamically generating list of image containers
+          items: images.map((url) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Container(
+                  margin: const EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    image: DecorationImage(
+                      image: NetworkImage(url),
+                      fit: BoxFit.cover,
                     ),
-                  );
-                },
-              );
-            }).toList(),
-            
-            // Carousel options
-            options: CarouselOptions(
-              height: 180.0,
-              enlargeCenterPage: false,
-              autoPlay: true,
-              aspectRatio: 16 / 9,
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enableInfiniteScroll: true,
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
-              viewportFraction: 0.8,
-            ),
+                  ),
+                );
+              },
+            );
+          }).toList(),
+
+          // Carousel options
+          options: CarouselOptions(
+            height: 180.0,
+            enlargeCenterPage: false,
+            autoPlay: true,
+            aspectRatio: 16 / 9,
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enableInfiniteScroll: true,
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            viewportFraction: 0.8,
           ),
-        ],
-      );
+        ),
+      ],
+    );
     // return Column(
     //   children: [
     //     SizedBox(
@@ -97,7 +97,7 @@ AnimatedContainer slider(images, pagePosition, active) {
   double margin = active ? 5 : 5;
 
   return AnimatedContainer(
-    duration: Duration(milliseconds: 500),
+    duration: const Duration(milliseconds: 500),
     curve: Curves.easeInOutCubic,
     margin: EdgeInsets.all(margin),
     decoration: BoxDecoration(
@@ -112,7 +112,7 @@ AnimatedContainer slider(images, pagePosition, active) {
 List<Widget> indicators(imagesLength, currentIndex) {
   return List<Widget>.generate(imagesLength, (index) {
     return Container(
-      margin: EdgeInsets.all(3),
+      margin: const EdgeInsets.all(3),
       width: 10,
       height: 10,
       decoration: BoxDecoration(

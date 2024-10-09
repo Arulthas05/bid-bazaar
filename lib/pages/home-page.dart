@@ -65,9 +65,9 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(
                         builder: (context) => const NotificationPage()));
               },
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: const Icon(
+              child: const Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: Icon(
                   Icons.notifications,
                   color: Colors.white,
                   size: 30,
@@ -161,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => BiddingPage()));
+                                    builder: (context) => const BiddingPage()));
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -212,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Text(
+                                        const Text(
                                           "ends in 30m",
                                           style: TextStyle(
                                             height: 0,
@@ -228,10 +228,9 @@ class _HomePageState extends State<HomePage> {
                                             // border:
                                             //     Border.all(color: Colors.black, width: 2),
                                           ),
-                                          child: Center(
+                                          child: const Center(
                                             child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(2.0),
+                                              padding: EdgeInsets.all(2.0),
                                               child: Text(
                                                 "Place Bid",
                                                 style: TextStyle(
@@ -286,7 +285,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => BuyPage()));
+                                    builder: (context) => const BuyPage()));
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -340,9 +339,9 @@ class _HomePageState extends State<HomePage> {
                                         // border:
                                         //     Border.all(color: Colors.black, width: 2),
                                       ),
-                                      child: Center(
+                                      child: const Center(
                                         child: Padding(
-                                          padding: const EdgeInsets.all(4.0),
+                                          padding: EdgeInsets.all(4.0),
                                           child: Text(
                                             "View",
                                             style: TextStyle(

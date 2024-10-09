@@ -28,9 +28,9 @@ class _NotificationPageState extends State<NotificationPage> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Icon(
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
@@ -38,7 +38,7 @@ class _NotificationPageState extends State<NotificationPage> {
         ),
         title: Text(
           S.of(context).notifications,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
           ),
@@ -51,7 +51,7 @@ class _NotificationPageState extends State<NotificationPage> {
                   MaterialPageRoute(
                       builder: (context) => const NotificationSetting()));
             },
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.only(right: 10),
               child: Icon(
                 Icons.settings,
@@ -76,17 +76,18 @@ class _NotificationPageState extends State<NotificationPage> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: EdgeInsets.only(bottom: 10),
+                    padding: const EdgeInsets.only(bottom: 10),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => NotificationView()));
+                                builder: (context) =>
+                                    const NotificationView()));
                       },
                       child: Container(
                         height: 80,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: bgInput1,
 
                           // border:
@@ -100,13 +101,13 @@ class _NotificationPageState extends State<NotificationPage> {
                                 Expanded(
                                     flex: 3,
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                           left: 8, right: 8, top: 8, bottom: 8),
                                       child: Row(
                                         children: [
                                           Flexible(
                                             child: Padding(
-                                              padding: EdgeInsets.only(
+                                              padding: const EdgeInsets.only(
                                                 left: 8,
                                                 right: 8,
                                               ),
@@ -162,7 +163,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                 ),
                               ],
                             ),
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.only(left: 16, right: 16),
                               child: Row(
                                 children: [

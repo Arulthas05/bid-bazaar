@@ -51,15 +51,15 @@ class _BiddingPageState extends State<BiddingPage> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Icon(
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
           ),
         ),
-        title: Text(
+        title: const Text(
           "Bidding",
           style: TextStyle(
             color: Colors.white,
@@ -95,7 +95,7 @@ class _BiddingPageState extends State<BiddingPage> {
               padding: const EdgeInsets.only(
                   left: 10, right: 10, top: 0, bottom: 10),
               child: Padding(
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Container(
                   child: Column(
                     children: [
@@ -103,7 +103,7 @@ class _BiddingPageState extends State<BiddingPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                                 left: 8, right: 8, top: 0, bottom: 8),
                             child: Row(
                               children: [
@@ -177,7 +177,7 @@ class _BiddingPageState extends State<BiddingPage> {
                           ],
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       const SizedBox(
                         height: 30,
                       ),
@@ -202,11 +202,11 @@ class _BiddingPageState extends State<BiddingPage> {
                           ),
                         ],
                       ),
-                      Divider(),
+                      const Divider(),
                       Row(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
                             child: Icon(
                               Icons.person_3_rounded,
                               size: 30,
@@ -257,11 +257,11 @@ class _BiddingPageState extends State<BiddingPage> {
                           ),
                         ],
                       ),
-                      Divider(),
+                      const Divider(),
                       Row(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
                             child: Icon(
                               Icons.person_3_rounded,
                               size: 30,
@@ -312,8 +312,8 @@ class _BiddingPageState extends State<BiddingPage> {
                           ),
                         ],
                       ),
-                      Divider(),
-                      SizedBox(
+                      const Divider(),
+                      const SizedBox(
                         height: 20,
                       ),
                       InkWell(
@@ -354,13 +354,14 @@ class _BiddingPageState extends State<BiddingPage> {
       context: context,
       builder: (BuildContext context) {
         return Dialog(
-          insetPadding: EdgeInsets.all(0),
+          insetPadding: const EdgeInsets.all(0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           child: Container(
             width: 350,
-            padding: EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 10),
+            padding:
+                const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 10),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -382,7 +383,7 @@ class _BiddingPageState extends State<BiddingPage> {
                   //     ),
                   //   ),
                   // ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(

@@ -35,7 +35,7 @@ class _Drawer_PageState extends State<Drawer_Page> {
                   width: 100,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                         image: AssetImage("assets/images/logo1.png"),
                         fit: BoxFit.cover,
                         alignment: Alignment.center),
@@ -44,7 +44,7 @@ class _Drawer_PageState extends State<Drawer_Page> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Expanded(
@@ -60,11 +60,11 @@ class _Drawer_PageState extends State<Drawer_Page> {
                   title: Transform.translate(
                     offset: const Offset(10, 0),
                     child: Padding(
-                      padding: EdgeInsets.only(bottom: 8.0),
+                      padding: const EdgeInsets.only(bottom: 8.0),
                       child: Text(
                         'Facebook',
                         style: TextStyle(
-                          color: Color(0xFF000000),
+                          color: const Color(0xFF000000),
                           fontFamily: GoogleFonts.poppins().fontFamily,
                           // decoration: TextDecoration.underline,
                           // decorationColor: Color(0xFF000000),
@@ -89,7 +89,7 @@ class _Drawer_PageState extends State<Drawer_Page> {
                     child: Text(
                       'Youtube',
                       style: TextStyle(
-                        color: Color(0xFF000000),
+                        color: const Color(0xFF000000),
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
                     ),
@@ -109,7 +109,7 @@ class _Drawer_PageState extends State<Drawer_Page> {
                     child: Text(
                       'twitter',
                       style: TextStyle(
-                        color: Color(0xFF000000),
+                        color: const Color(0xFF000000),
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
                     ),
@@ -128,7 +128,7 @@ class _Drawer_PageState extends State<Drawer_Page> {
                     child: Text(
                       'Instagram',
                       style: TextStyle(
-                        color: Color(0xFF000000),
+                        color: const Color(0xFF000000),
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
                     ),
@@ -145,11 +145,11 @@ class _Drawer_PageState extends State<Drawer_Page> {
                   iconColor: Colors.blue,
                   // title: const Text('e-Mail'),
                   title: Transform.translate(
-                    offset: Offset(10, 0),
+                    offset: const Offset(10, 0),
                     child: Text(
                       'Linkedin',
                       style: TextStyle(
-                        color: Color(0xFF000000),
+                        color: const Color(0xFF000000),
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
                     ),
@@ -163,11 +163,11 @@ class _Drawer_PageState extends State<Drawer_Page> {
                   iconColor: Colors.blue,
                   // title: const Text('e-Mail'),
                   title: Transform.translate(
-                    offset: Offset(10, 0),
+                    offset: const Offset(10, 0),
                     child: Text(
                       'vithu trust fund',
                       style: TextStyle(
-                        color: Color(0xFF000000),
+                        color: const Color(0xFF000000),
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
                     ),
@@ -196,7 +196,7 @@ class _Drawer_PageState extends State<Drawer_Page> {
                   'Developed by: Loncey Tech',
                   style: TextStyle(
                       fontSize: 12,
-                      color: Color(0xFF000000),
+                      color: const Color(0xFF000000),
                       fontWeight: FontWeight.bold,
                       fontFamily: GoogleFonts.poppins().fontFamily),
                 ),

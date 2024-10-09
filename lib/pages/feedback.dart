@@ -48,15 +48,15 @@ class _FeedBackState extends State<FeedBack> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Icon(
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
           ),
         ),
-        title: Text(
+        title: const Text(
           "FeedBack",
           style: TextStyle(
             color: Colors.white,
@@ -92,7 +92,7 @@ class _FeedBackState extends State<FeedBack> {
               padding: const EdgeInsets.only(
                   left: 10, right: 10, top: 0, bottom: 10),
               child: Padding(
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Container(
                   child: Column(
                     children: [
@@ -100,7 +100,7 @@ class _FeedBackState extends State<FeedBack> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                                 left: 8, right: 8, top: 0, bottom: 8),
                             child: Row(
                               children: [
@@ -135,10 +135,10 @@ class _FeedBackState extends State<FeedBack> {
                         child: Text(
                             'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on'),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 8, right: 8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -171,7 +171,7 @@ class _FeedBackState extends State<FeedBack> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
@@ -198,13 +198,13 @@ class _FeedBackState extends State<FeedBack> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
                                 10.0), // Add border radius here
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color:
                                     bgAppBar), // Optionally, add a border color when focused
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       InkWell(

@@ -66,8 +66,8 @@ class _PostAddState extends State<PostAdd> {
 
   // Function to pick images
   Future<void> _pickImages() async {
-    final ImagePicker _picker = ImagePicker();
-    final List<XFile>? images = await _picker.pickMultiImage();
+    final ImagePicker picker = ImagePicker();
+    final List<XFile> images = await picker.pickMultiImage();
     setState(() {
       selectedImages = images;
     });
@@ -82,15 +82,15 @@ class _PostAddState extends State<PostAdd> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Icon(
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
           ),
         ),
-        title: Text(
+        title: const Text(
           "POST YOUR ADD",
           style: TextStyle(
             color: Colors.white,
@@ -260,7 +260,7 @@ class _PostAddState extends State<PostAdd> {
                     hintText: 'Set Bid End Date',
                     filled: true,
                     fillColor: Colors.grey[200],
-                    suffixIcon: Icon(Icons.calendar_today),
+                    suffixIcon: const Icon(Icons.calendar_today),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                       borderSide: BorderSide.none,
@@ -275,12 +275,12 @@ class _PostAddState extends State<PostAdd> {
                 ElevatedButton(
                   style: ButtonStyle(
                     // Set the background color
-                    backgroundColor: MaterialStateProperty.all(
+                    backgroundColor: WidgetStateProperty.all(
                       Colors.grey[200],
                     ), // Replace with your desired color
 
                     // Customize the border radius
-                    shape: MaterialStateProperty.all(
+                    shape: WidgetStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                             8), // Set the desired border radius (smaller for sharp corners)
@@ -294,7 +294,7 @@ class _PostAddState extends State<PostAdd> {
               ],
 
               const SizedBox(height: 16),
-              Text('Condition:'),
+              const Text('Condition:'),
               Row(
                 children: [
                   Row(
@@ -308,10 +308,10 @@ class _PostAddState extends State<PostAdd> {
                           });
                         },
                       ),
-                      Text('New'),
+                      const Text('New'),
                     ],
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Row(
                     children: [
                       Radio<String>(
@@ -323,23 +323,23 @@ class _PostAddState extends State<PostAdd> {
                           });
                         },
                       ),
-                      Text('Used'),
+                      const Text('Used'),
                     ],
                   ),
                 ],
               ),
-              SizedBox(height: 16),
-              Text('Add Images'),
+              const SizedBox(height: 16),
+              const Text('Add Images'),
               // Single Image Upload
               ElevatedButton(
                 style: ButtonStyle(
                   // Set the background color
-                  backgroundColor: MaterialStateProperty.all(
+                  backgroundColor: WidgetStateProperty.all(
                     Colors.grey[200],
                   ), // Replace with your desired color
 
                   // Customize the border radius
-                  shape: MaterialStateProperty.all(
+                  shape: WidgetStateProperty.all(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
                           8), // Set the desired border radius (smaller for sharp corners)
@@ -354,7 +354,7 @@ class _PostAddState extends State<PostAdd> {
                 ),
               ),
 
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -363,7 +363,7 @@ class _PostAddState extends State<PostAdd> {
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Form Submitted')),
+                          const SnackBar(content: Text('Form Submitted')),
                         );
                       }
                       Navigator.push(
